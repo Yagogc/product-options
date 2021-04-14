@@ -88,7 +88,7 @@ const AttributeSwatch = ({
       <VariantBlock>
         <div>Colour:</div>
         {attrs.map((attr) => (
-          <Label key={attr.id} htmlFor={attr.id}>
+          <Label key={attr.id} htmlFor={attr.id} data-testid={attr.id}>
             <input
               type="radio"
               id={attr.id}
@@ -108,7 +108,7 @@ const AttributeSwatch = ({
       <VariantBlock>
         <div>Paper type:</div>
         {attrs.map((attr) => (
-          <Label key={attr.id} htmlFor={attr.id}>
+          <Label key={attr.id} htmlFor={attr.id} data-testid={attr.id}>
             <input
               type="radio"
               id={attr.id}
@@ -128,7 +128,7 @@ const AttributeSwatch = ({
       <VariantBlock>
         <div>Slipcase:</div>
         {attrs.map((attr) => (
-          <Label key={attr.id} htmlFor={attr.id}>
+          <Label key={attr.id} htmlFor={attr.id} data-testid={attr.id}>
             <input
               type="radio"
               id={attr.id}
