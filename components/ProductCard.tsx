@@ -17,25 +17,10 @@ import {
 
 const ProductCard = ({ skus }: { skus: Product[] }) => {
   const uniqueAttr = useMemo(() => getUniqueAttrs(skus), [skus])
-  const [selectedSku, setSelectedSku] = useState<Product | undefined>(skus[0])
-  const [selectedAttrs, setSelectedAttrs] = useState<
-    {
-      [key in AttrType]: string
-    }
-  >({
-    [AttrType.colour]: uniqueAttr[AttrType.colour][0].id,
-    [AttrType.type]: uniqueAttr[AttrType.type][0].id,
-    [AttrType.case]: uniqueAttr[AttrType.case][0].id,
-  })
-
-  useEffect(() => {
-    const selected = skus.find(
-      (sku) =>
-        sku.attributes.filter((attr) => attr.id === selectedAttrs[attr.type])
-          .length === 3
-    )
-    setSelectedSku(selected)
-  }, [skus, selectedAttrs, setSelectedSku])
+  const { selectedSku, selectedAttrs, setSelectedAttrs } = useSelectedProduct(
+    skus,
+    uniqueAttr
+  )
 
   return (
     <Card>
@@ -126,4 +111,30 @@ const AttributeSwatch = ({
   )
 }
 
-export { ProductCard }
+const useSelectedProduct = (
+  skus: Product[],
+  uniqueAttr: { [key: string]: Attribute[] }
+) => {
+  const [selectedSku, setSelectedSku] = useState<Product | undefined>(skus[0])
+  const [selectedAttrs, setSelectedAttrs] = useState<
+    {
+      [key in AttrType]: string
+    }
+  >({
+    [AttrType.colour]: uniqueAttr[AttrType.colour][0].id,
+    [AttrType.type]: uniqueAttr[AttrType.type][0].id,
+    [AttrType.case]: uniqueAttr[AttrType.case][0].id,
+  })
+
+  useEffect(() => {
+    const selected = skus.find(
+      (sku) =>
+        sku.attributes.filter((attr) => attr.id === selectedAttrs[attr.type])
+          .length === 3
+    )
+    setSelectedSku(selected)
+  }, [skus, selectedAttrs, setSelectedSku])
+  return { selectedSku, selectedAttrs, setSelectedAttrs }
+}
+
+export { ProductCard, useSelectedProduct }
