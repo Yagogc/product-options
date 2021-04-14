@@ -83,46 +83,6 @@ const AttributeSwatch = ({
     setSelectedAttrs(newSelectedAttrs)
   }
 
-  if (type === AttrType.colour) {
-    return (
-      <VariantBlock>
-        <div>Colour:</div>
-        {attrs.map((attr) => (
-          <Label key={attr.id} htmlFor={attr.id} data-testid={attr.id}>
-            <input
-              type="radio"
-              id={attr.id}
-              value={attr.id}
-              name={type}
-              checked={attr.id === selectedAttr[type]}
-              onChange={handleChange}
-            />
-            <span>{attr.label}</span>
-          </Label>
-        ))}
-      </VariantBlock>
-    )
-  }
-  if (type === AttrType.type) {
-    return (
-      <VariantBlock>
-        <div>Paper type:</div>
-        {attrs.map((attr) => (
-          <Label key={attr.id} htmlFor={attr.id} data-testid={attr.id}>
-            <input
-              type="radio"
-              id={attr.id}
-              value={attr.id}
-              name={type}
-              checked={attr.id === selectedAttr[type]}
-              onChange={handleChange}
-            />
-            <div>{attr.label}</div>
-          </Label>
-        ))}
-      </VariantBlock>
-    )
-  }
   if (type === AttrType.case) {
     return (
       <VariantBlock>
@@ -143,7 +103,27 @@ const AttributeSwatch = ({
       </VariantBlock>
     )
   }
-  return null
+
+  const AtrrTitle = type === AttrType.type ? 'Paper type:' : 'Colour:'
+
+  return (
+    <VariantBlock>
+      <div>{AtrrTitle}</div>
+      {attrs.map((attr) => (
+        <Label key={attr.id} htmlFor={attr.id} data-testid={attr.id}>
+          <input
+            type="radio"
+            id={attr.id}
+            value={attr.id}
+            name={type}
+            checked={attr.id === selectedAttr[type]}
+            onChange={handleChange}
+          />
+          <div>{attr.label}</div>
+        </Label>
+      ))}
+    </VariantBlock>
+  )
 }
 
 export { ProductCard }
