@@ -1,6 +1,12 @@
+export enum AttrType {
+  colour = 'cover-colour',
+  type = 'paper-type',
+  case = 'slip-case-included',
+}
+
 export interface Attribute {
   id: string
-  type: string
+  type: AttrType
   value: string | boolean
   label: string
 }
