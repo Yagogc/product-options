@@ -21,6 +21,13 @@ const { styled, global: globalStyle, getCssString } = createCss({
 
 const globalStyles = globalStyle({
   '*': { padding: 0, margin: 0, boxSizing: 'border-box' },
+  '#__next': {
+    padding: '10px',
+    width: '100%',
+    maxWidth: '768px',
+    display: 'grid',
+    gap: '10px',
+  },
   body: {
     fontFamily:
       '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif',
