@@ -1,8 +1,9 @@
-import '../styles/globals.css'
-
 import Head from 'next/head'
 
+import { globalStyles } from '../styles/config'
+
 function MyApp({ Component, pageProps }) {
+  globalStyles()
   return (
     <>
       <Head>
