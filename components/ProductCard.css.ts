@@ -70,4 +70,36 @@ const Button = styled('button', {
   cursor: 'pointer',
 })
 
-export { Button, Card, Img, Price, ProductInfo, Summary, TotalPrice }
+const VariantsContainer = styled('div', {
+  fontSize: '14px',
+  display: 'grid',
+  gap: '10px',
+  gridTemplateColumns: '1fr',
+  '@bp2': {
+    gridTemplateColumns: '1fr 1fr 1fr',
+  },
+})
+const VariantBlock = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '10px',
+})
+
+const Label = styled('label', {
+  cursor: 'pointer',
+  display: 'flex',
+  gap: '10px',
+})
+
+export {
+  Button,
+  Card,
+  Img,
+  Price,
+  ProductInfo,
+  Summary,
+  TotalPrice,
+  VariantsContainer,
+  VariantBlock,
+  Label,
+}
